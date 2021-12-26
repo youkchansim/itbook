@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import Repositories
+import Interfaces
 import UseCases
 import Entities
 

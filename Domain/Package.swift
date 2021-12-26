@@ -12,8 +12,8 @@ let package = Package(
             name: "Entities",
             targets: ["Entities"]),
         .library(
-            name: "Repositories",
-            targets: ["Repositories"]),
+            name: "Interfaces",
+            targets: ["Interfaces"]),
         .library(
             name: "UseCases",
             targets: ["UseCases"]),
@@ -29,11 +29,11 @@ let package = Package(
             name: "Entities",
             dependencies: []),
         .target(
-            name: "Repositories",
+            name: "Interfaces",
             dependencies: ["Entities"]),
         .target(
             name: "UseCases",
-            dependencies: ["Entities", "Repositories"]),
+            dependencies: ["Entities", "Interfaces"]),
         .testTarget(
             name: "UseCasesTests",
             dependencies: ["UseCases"]),

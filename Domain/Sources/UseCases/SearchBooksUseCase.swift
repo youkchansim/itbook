@@ -6,7 +6,7 @@
 //
 
 import Entities
-import Repositories
+import Interfaces
 
 public protocol SearchBooksUseCase {
     

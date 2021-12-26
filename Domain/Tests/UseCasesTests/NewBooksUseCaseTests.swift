@@ -7,7 +7,7 @@
 
 import XCTest
 import Entities
-import Repositories
+import Interfaces
 import UseCases
 
 class NewBooksUseCaseTests: XCTestCase {
