@@ -11,6 +11,9 @@ let package = Package(
         .library(
             name: "Network",
             targets: ["Network"]),
+        .library(
+            name: "Targets",
+            targets: ["Targets"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -23,6 +26,9 @@ let package = Package(
         .target(
             name: "Network",
             dependencies: ["Alamofire"]),
+        .target(
+            name: "Targets",
+            dependencies: ["Network"]),
         .testTarget(
             name: "NetworkTests",
             dependencies: ["Network"]),
