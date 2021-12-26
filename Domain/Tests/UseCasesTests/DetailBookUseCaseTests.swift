@@ -6,9 +6,10 @@
 //
 
 import XCTest
-import Interfaces
 import UseCases
 import Entities
+import Extension
+import Interfaces
 
 class DetailBookUseCaseTests: XCTestCase {
     
