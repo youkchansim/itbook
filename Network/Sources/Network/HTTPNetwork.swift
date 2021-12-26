@@ -37,7 +37,7 @@ public extension RequestTarget {
 
 public protocol NetworkRequestable {
     
-    func request<T: Decodable>(target: RequestTarget) async throws -> T
+    func request<T: Decodable>(target: RequestTarget) async -> Result<T, Error>
 }
 
 public struct HTTPNetwork: NetworkRequestable {
@@ -46,7 +46,7 @@ public struct HTTPNetwork: NetworkRequestable {
     
     public init() {}
 
-    public func request<T: Decodable>(target: RequestTarget) async throws -> T {
+    public func request<T: Decodable>(target: RequestTarget) async -> Result<T, Error> {
         let response = AF.request(target,
                                   method: target.method,
                                   parameters: target.bodyPrameters,
@@ -55,10 +55,9 @@ public struct HTTPNetwork: NetworkRequestable {
             .serializingDecodable(T.self)
         
         let result = await response.result
-        
         switch result {
-        case .success(let value): return value
-        case .failure(let error): throw error
+        case .success(let value): return .success(value)
+        case .failure(let error): return .failure(error)
         }
     }
 }
