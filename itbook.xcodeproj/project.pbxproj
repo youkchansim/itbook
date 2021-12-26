@@ -37,6 +37,7 @@
 		E9B2DE28277830EE004FAF83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9B2DE2D277830EF004FAF83 /* itbookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = itbookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9B2DE31277830EF004FAF83 /* itbookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itbookTests.swift; sourceTree = "<group>"; };
+		E9B2DE4A277833ED004FAF83 /* Network */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Network; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +61,7 @@
 		E9B2DE0E277830ED004FAF83 = {
 			isa = PBXGroup;
 			children = (
+				E9B2DE4A277833ED004FAF83 /* Network */,
 				E9B2DE19277830ED004FAF83 /* itbook */,
 				E9B2DE30277830EF004FAF83 /* itbookTests */,
 				E9B2DE18277830ED004FAF83 /* Products */,
