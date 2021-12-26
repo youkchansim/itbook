@@ -39,6 +39,7 @@
 		E9B2DE31277830EF004FAF83 /* itbookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itbookTests.swift; sourceTree = "<group>"; };
 		E9B2DE4A277833ED004FAF83 /* Network */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Network; sourceTree = "<group>"; };
 		E9B2DE4B2778366B004FAF83 /* Domain */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Domain; sourceTree = "<group>"; };
+		E9B2DE4C27786EB7004FAF83 /* Data */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Data; sourceTree = "<group>"; };
 		E9B2DE4E27789264004FAF83 /* Util */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Util; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				E9B2DE4E27789264004FAF83 /* Util */,
+				E9B2DE4C27786EB7004FAF83 /* Data */,
 				E9B2DE4B2778366B004FAF83 /* Domain */,
 				E9B2DE4A277833ED004FAF83 /* Network */,
 				E9B2DE19277830ED004FAF83 /* itbook */,
