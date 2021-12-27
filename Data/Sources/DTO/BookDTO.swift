@@ -23,7 +23,7 @@ public struct BookDTO: Decodable {
     public let year: String?
     public let rating: String?
     public let desc: String?
-    public let pdf: String?
+    public let pdf: [String: String]?
 }
 
 public extension BookDTO {
@@ -43,6 +43,6 @@ public extension BookDTO {
                     year: year ?? "",
                     rating: rating ?? "",
                     desc: desc ?? "",
-                    pdf: pdf ?? "")
+                    pdf: pdf ?? [:])
     }
 }

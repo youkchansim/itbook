@@ -23,7 +23,7 @@ public struct Book {
     public let year: String
     public let rating: String
     public let desc: String
-    public let pdf: String
+    public let pdf: [String: String]
     
     public init(
         title: String,
@@ -40,7 +40,7 @@ public struct Book {
         year: String = "",
         rating: String = "",
         desc: String = "",
-        pdf: String = ""
+        pdf: [String: String] = [:]
     ) {
         self.title = title
         self.subtitle = subtitle

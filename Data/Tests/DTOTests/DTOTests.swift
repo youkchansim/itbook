@@ -14,12 +14,24 @@ class DTOTests: XCTestCase {
         guard let jsonData =
         """
             {
-                "title": "Designing Across Senses",
-                "subtitle": "",
-                "isbn13": "9781491954249",
-                "price": "$27.59",
-                "image": "https://itbook.store/img/books/9781491954249.png",
-                "url": "https://itbook.store/books/9781491954249"
+                "error": "0",
+                "title": "Securing DevOps",
+                "subtitle": "Security in the Cloud",
+                "authors": "Julien Vehent",
+                "publisher": "Manning",
+                "isbn10": "1617294136",
+                "isbn13": "9781617294136",
+                "pages": "384",
+                "year": "2018",
+                "rating": "5",
+                "desc": "An application running in the cloud can benefit from incredible efficiencies, but they come with unique security threats too. A DevOps team's highest priority is understanding those risks and hardening the system against them.Securing DevOps teaches you the essential techniques to secure your cloud ...",
+                "price": "$26.98",
+                "image": "https://itbook.store/img/books/9781617294136.png",
+                "url": "https://itbook.store/books/9781617294136",
+                "pdf": {
+                          "Chapter 2": "https://itbook.store/files/9781617294136/chapter2.pdf",
+                          "Chapter 5": "https://itbook.store/files/9781617294136/chapter5.pdf"
+                       }
             }
         """.data(using: .utf8) else {
             XCTFail("Unsupport json string")
@@ -29,7 +41,8 @@ class DTOTests: XCTestCase {
         do {
             let result = try JSONDecoder().decode(BookDTO.self, from: jsonData)
             let book = result.toBook()
-            XCTAssertTrue(book.title == "Designing Across Senses")
+            XCTAssertTrue(book.title == "Securing DevOps")
+            XCTAssertTrue(book.pdf.keys.count == 2)
         } catch {
             XCTFail(error.localizedDescription)
         }
