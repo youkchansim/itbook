@@ -23,7 +23,7 @@ public struct NewBooksRepositoryImp: NewBooksRepository {
     
     public func fetch() async -> Result<[Book], Error> {
         let target = NewBooksTarget()
-        let result: Result<[BookDTO], Error> = await networkRequestable.request(target: target)
-        return result.map { dtos in dtos.map { $0.toBook() } }
+        let result: Result<BookPageDTO, Error> = await networkRequestable.request(target: target)
+        return result.map { $0.toBookPage().books }
     }
 }
