@@ -9,6 +9,7 @@ import Entities
 
 public struct BookPageDTO: Decodable {
     
+    public let error: String
     public let total: String
     public let page: String?
     public let books: [BookDTO]
