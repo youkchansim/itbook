@@ -38,4 +38,5 @@ public extension RequestTarget {
 public protocol NetworkRequestable {
     
     func request<T: Decodable>(target: RequestTarget) async -> Result<T, Error>
+    func request(from url: URL) async -> Result<Data, Error>
 }

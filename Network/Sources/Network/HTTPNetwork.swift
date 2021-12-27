@@ -28,4 +28,13 @@ public struct HTTPNetwork: NetworkRequestable {
         case .failure(let error): return .failure(error)
         }
     }
+    
+    public func request(from url: URL) async -> Result<Data, Error> {
+        let response = AF.request(url).serializingData()
+        let result = await response.result
+        switch result {
+        case .success(let value): return .success(value)
+        case .failure(let error): return .failure(error)
+        }
+    }
 }
