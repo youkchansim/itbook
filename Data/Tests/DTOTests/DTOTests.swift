@@ -15,7 +15,7 @@ class DTOTests: XCTestCase {
         """
             {
                 "title": "Designing Across Senses",
-                "subtitle": "A Multimodal Approach to Product Design",
+                "subtitle": "",
                 "isbn13": "9781491954249",
                 "price": "$27.59",
                 "image": "https://itbook.store/img/books/9781491954249.png",
@@ -39,34 +39,28 @@ class DTOTests: XCTestCase {
         guard let jsonData =
         """
             {
-                "total": "48",
-                "page": "1",
-                "books": [
-                    {
-                        "title": "Practical MongoDB",
-                        "subtitle": "Architecting, Developing, and Administering MongoDB",
-                        "isbn13": "9781484206485",
-                        "price": "$32.04",
-                        "image": "https://itbook.store/img/books/9781484206485.png",
-                        "url": "https://itbook.store/books/9781484206485"
-                    },
-                    {
-                        "title": "The Definitive Guide to MongoDB, 3rd Edition",
-                        "subtitle": "A complete guide to dealing with Big Data using MongoDB",
-                        "isbn13": "9781484211830",
-                        "price": "$47.11",
-                        "image": "https://itbook.store/img/books/9781484211830.png",
-                        "url": "https://itbook.store/books/9781484211830"
-                    },
-                    {
-                        "title": "MongoDB in Action, 2nd Edition",
-                        "subtitle": "Covers MongoDB version 3.0",
-                        "isbn13": "9781617291609",
-                        "price": "$32.10",
-                        "image": "https://itbook.store/img/books/9781617291609.png",
-                        "url": "https://itbook.store/books/9781617291609"
-                    }
-                ]
+                "error":"0",
+                "total":"20",
+                "books":
+                    [
+                        {
+                            "title":"Architect Modern Web Applications with ASP.NET Core and Azure",
+                            "subtitle":"",
+                            "isbn13":"1001635859865",
+                            "price":"$0.00",
+                            "image":"https://itbook.store/img/books/1001635859865.png",
+                            "url":"https://itbook.store/books/1001635859865"
+                        },
+                        {
+                            "title":"Graph-Powered Machine Learning",
+                            "subtitle":"",
+                            "isbn13":"9781617295645",
+                            "price":"$49.99",
+                            "image":"https://itbook.store/img/books/9781617295645.png",
+                            "url":"https://itbook.store/books/9781617295645"
+                        }
+                    ]
+        
             }
         """.data(using: .utf8) else {
             XCTFail("Unsupport json string")
@@ -76,7 +70,7 @@ class DTOTests: XCTestCase {
         do {
             let result = try JSONDecoder().decode(BookPageDTO.self, from: jsonData)
             let bookPage = result.toBookPage()
-            XCTAssertTrue(bookPage.total == "48")
+            XCTAssertTrue(bookPage.total == "20")
             XCTAssertTrue(!bookPage.books.isEmpty)
         } catch {
             XCTFail(error.localizedDescription)
