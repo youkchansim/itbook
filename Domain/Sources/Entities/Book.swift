@@ -60,6 +60,12 @@ public struct Book {
     }
 }
 
+public extension Book {
+    
+    var imageURL: URL? { URL(string: image) }
+    var purchaseURL: URL? { URL(string: url) }
+}
+
 public struct BookPage {
     
     public let total: String
