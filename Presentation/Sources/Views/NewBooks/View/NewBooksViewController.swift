@@ -112,19 +112,3 @@ extension NewBooksViewController: StoryboardInstantiable {
     
     public static var storyboardName: String { "NewBooks" }
 }
-
-public final class SearchBookCell: UITableViewCell {
-    
-    @IBOutlet weak var bookImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var isbn13Label: UILabel!
-    @IBOutlet weak var urlLabel: UILabel!
-    
-    public override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        bookImageView.image = nil
-    }
-}

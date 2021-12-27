@@ -41,6 +41,12 @@ let package = Package(
                 .product(name: "UseCases", package: "Domain"),
                 .product(name: "Entities", package: "Domain"),
                 .product(name: "Extension", package: "Util"),
-            ])
+            ]),
+        .testTarget(
+            name: "PageControllerTests",
+            dependencies: [
+                "Views",
+                .product(name: "Extension", package: "Util"),
+            ]),
     ]
 )
