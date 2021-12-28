@@ -7,8 +7,8 @@
 
 import XCTest
 import Entities
-import Extension
 import Repositories
+import TestExtension
 
 class DetailBookRepositoryImpTests: XCTestCase {
     

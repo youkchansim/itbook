@@ -6,8 +6,8 @@
 //
 
 import XCTest
-import Extension
 import Foundation
+import TestExtension
 @testable import Views
 
 class PageControllerTests: XCTestCase {

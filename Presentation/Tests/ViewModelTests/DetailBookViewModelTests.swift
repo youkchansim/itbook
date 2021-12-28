@@ -9,7 +9,7 @@ import Views
 import XCTest
 import Entities
 import UseCases
-import Extension
+import TestExtension
 
 class DetailBookViewModelTests: XCTestCase {
     

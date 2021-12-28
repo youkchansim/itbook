@@ -8,8 +8,8 @@
 import XCTest
 import UseCases
 import Entities
-import Extension
 import Interfaces
+import TestExtension
 
 class DetailBookUseCaseTests: XCTestCase {
     

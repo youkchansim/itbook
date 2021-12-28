@@ -9,7 +9,7 @@ import XCTest
 import Image
 import Cache
 import Network
-import Extension
+import TestExtension
 
 class ImageProviderTests: XCTestCase {
     
