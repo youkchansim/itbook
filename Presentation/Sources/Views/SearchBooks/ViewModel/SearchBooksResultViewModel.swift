@@ -59,14 +59,28 @@ public final class SearchBooksResultViewModel: SearchBooksResultViewModelAction,
         self.query = query
         pageController.load { [weak self] page in
             guard let self = self else { return }
-            await self.load(query: query, page: page)
+            do {
+                let bookPage = try await self.searchBooksUseCase.execute(query: query, page: page).get()
+                self.searchedBooks.value = bookPage.books
+                self.currentPage = bookPage
+            } catch {
+                print(error.localizedDescription)
+            }
         }
     }
     
     public func loadNextPage() {
         pageController.loadNext(pageInfo: PageInfo(hasMorePage: hasMorePage, load: { [weak self] page in
             guard let self = self else { return }
-            await self.load(query: self.query, page: page)
+            do {
+                let bookPage = try await self.searchBooksUseCase.execute(query: self.query, page: page).get()
+                var books = self.searchedBooks.value
+                books.append(contentsOf: bookPage.books)
+                self.searchedBooks.value = books
+                self.currentPage = bookPage
+            } catch {
+                print(error.localizedDescription)
+            }
         }))
     }
     
@@ -77,18 +91,6 @@ public final class SearchBooksResultViewModel: SearchBooksResultViewModelAction,
     
     public func select(book: Book) {
         flowDelegate.showDetail(book: book)
-    }
-    
-    func load(query: String, page: Int) async {
-        do {
-            let bookPage = try await searchBooksUseCase.execute(query: query, page: page).get()
-            var books = searchedBooks.value
-            books.append(contentsOf: bookPage.books)
-            searchedBooks.value = books
-            currentPage = bookPage
-        } catch {
-            print(error.localizedDescription)
-        }
     }
 }
 

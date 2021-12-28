@@ -39,7 +39,7 @@ private extension SearchBooksResultViewController {
     
     func bind() {
         $query
-            .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
+            .debounce(for: .seconds(0.2), scheduler: RunLoop.main)
             .sink(receiveValue: { [weak self] in
                 guard let query = $0 else { return }
                 if query.isEmpty {

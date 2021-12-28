@@ -34,6 +34,7 @@ public class PageController<T> {
     
     func load(_ closure: @escaping Load) {
         guard !isLoading else { return }
+        currentPage = 1
         isLoading = true
         Task {
             defer {
