@@ -8,6 +8,7 @@
 import Combine
 import UseCases
 import Entities
+import Foundation
 
 public protocol NewBooksFlowDelegate {
     
@@ -51,7 +52,7 @@ public final class NewBooksViewModel: NewBooksViewModelAction, NewBooksViewModel
             do {
                 newBooks.value = try await newBooksUseCase.execute().get()
             } catch {
-                print(error.localizedDescription)
+                NSLog(error.localizedDescription)
             }
         }
     }

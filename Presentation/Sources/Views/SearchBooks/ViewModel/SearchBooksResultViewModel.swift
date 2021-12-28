@@ -8,6 +8,7 @@
 import Combine
 import UseCases
 import Entities
+import Foundation
 
 public protocol SearchBooksResultFlowDelegate {
     
@@ -64,7 +65,7 @@ public final class SearchBooksResultViewModel: SearchBooksResultViewModelAction,
                 self.searchedBooks.value = bookPage.books
                 self.currentPage = bookPage
             } catch {
-                print(error.localizedDescription)
+                NSLog(error.localizedDescription)
             }
         }
     }
@@ -79,7 +80,7 @@ public final class SearchBooksResultViewModel: SearchBooksResultViewModelAction,
                 self.searchedBooks.value = books
                 self.currentPage = bookPage
             } catch {
-                print(error.localizedDescription)
+                NSLog(error.localizedDescription)
             }
         }))
     }

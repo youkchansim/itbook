@@ -56,7 +56,7 @@ public class DetailBookViewModel: DetailBookViewModelAction, DetailBookViewModel
             do {
                 book.value = try await detailBookUseCase.execute(book: book.value).get()
             } catch {
-                print(error.localizedDescription)
+                NSLog(error.localizedDescription)
             }
         }
     }
