@@ -6,6 +6,7 @@
 //
 
 import Network
+import Foundation
 
 struct ResponseMock: Decodable {
     
@@ -21,6 +22,11 @@ class NetworkRequestableMock: NetworkRequestable {
     var requestCallCount = 0
     
     func request<T>(target: RequestTarget) async -> Result<T, Error> where T : Decodable {
+        requestCallCount += 1
+        return .failure(MockError.mockError)
+    }
+    
+    func request(from url: URL) async -> Result<Data, Error> {
         requestCallCount += 1
         return .failure(MockError.mockError)
     }
