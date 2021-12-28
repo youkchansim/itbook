@@ -25,10 +25,12 @@ public struct PageInfo<T> {
 
 public class PageController<T> {
     
-    private var isLoading = false
+    var isLoading = false
     
-    private var currentPage = 1
+    var currentPage = 1
     private var nextPage: Int { currentPage + 1 }
+    private var task: Task<(), Never>?
+    private var nextTask: Task<(), Never>?
     
     public init() { }
     
@@ -36,7 +38,8 @@ public class PageController<T> {
         guard !isLoading else { return }
         currentPage = 1
         isLoading = true
-        Task {
+        cancel()
+        task = Task {
             defer {
                 currentPage += 1
                 isLoading = false
@@ -49,12 +52,27 @@ public class PageController<T> {
         guard !isLoading else { return }
         guard pageInfo.hasMorePage else { return }
         isLoading = true
-        Task {
+        cancelNext()
+        nextTask = Task {
             defer {
                 currentPage += 1
                 isLoading = false
             }
             await pageInfo.load(nextPage)
         }
+    }
+    
+    func cancel() {
+        task?.cancel()
+        task = nil
+        nextTask?.cancel()
+        nextTask = nil
+        isLoading = false
+    }
+    
+    func cancelNext() {
+        nextTask?.cancel()
+        nextTask = nil
+        isLoading = false
     }
 }
