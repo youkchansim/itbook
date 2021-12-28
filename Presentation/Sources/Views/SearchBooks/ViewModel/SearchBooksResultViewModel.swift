@@ -9,11 +9,17 @@ import Combine
 import UseCases
 import Entities
 
+public protocol SearchBooksResultFlowDelegate {
+    
+    func showDetail(book: Book)
+}
+
 public protocol SearchBooksResultViewModelAction {
     
     func search(query: String)
     func cancel()
     func loadNextPage()
+    func select(book: Book)
 }
 
 public protocol SearchBooksResultViewModelState {
@@ -30,6 +36,7 @@ public protocol SearchBooksResultViewModelType {
 public final class SearchBooksResultViewModel: SearchBooksResultViewModelAction, SearchBooksResultViewModelState {
     
     private let searchBooksUseCase: SearchBooksUseCase
+    private let flowDelegate: SearchBooksResultFlowDelegate
     
     public var searchedBooks: CurrentValueSubject<[Book], Error> = CurrentValueSubject([])
     
@@ -41,9 +48,11 @@ public final class SearchBooksResultViewModel: SearchBooksResultViewModelAction,
     private let pageController = PageController<Result<BookPage, Error>>()
     
     public init(
-        searchBooksUseCase: SearchBooksUseCase
+        searchBooksUseCase: SearchBooksUseCase,
+        flowDelegate: SearchBooksResultFlowDelegate
     ) {
         self.searchBooksUseCase = searchBooksUseCase
+        self.flowDelegate = flowDelegate
     }
     
     public func search(query: String) {
@@ -64,6 +73,10 @@ public final class SearchBooksResultViewModel: SearchBooksResultViewModelAction,
     public func cancel() {
         currentPage = nil
         searchedBooks.value = []
+    }
+    
+    public func select(book: Book) {
+        flowDelegate.showDetail(book: book)
     }
     
     func load(query: String, page: Int) async {

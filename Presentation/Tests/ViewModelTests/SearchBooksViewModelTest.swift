@@ -23,9 +23,19 @@ class SearchBooksViewModelTest: XCTestCase {
         }
     }
     
+    class FlowMock: SearchBooksResultFlowDelegate {
+        
+        var callCount = 0
+        
+        func showDetail(book: Book) {
+            callCount += 1
+        }
+    }
+    
     func test_newBooksViewModel_whenLoad_thenLoadFunctionCallCountIsOne() {
         let mock = SearchBooksUseCaseMock()
-        let sut: SearchBooksResultViewModelType = SearchBooksResultViewModel(searchBooksUseCase: mock)
+        let flowMock = FlowMock()
+        let sut: SearchBooksResultViewModelType = SearchBooksResultViewModel(searchBooksUseCase: mock, flowDelegate: flowMock)
         
         // when
         asyncTest {
@@ -33,6 +43,18 @@ class SearchBooksViewModelTest: XCTestCase {
         }
         
         // then
-        XCTAssertTrue(mock.callCount == 1, "'execute' was called zero or more than 2 - count: \(mock.callCount)")
+        XCTAssertTrue(mock.callCount == 1, "Called zero or more than 2 - count: \(mock.callCount)")
+    }
+    
+    func test_newBooksViewModel_whenSelect_thenShowDetailFunctionCallCountIsOne() {
+        let mock = SearchBooksUseCaseMock()
+        let flowMock = FlowMock()
+        let sut: SearchBooksResultViewModelType = SearchBooksResultViewModel(searchBooksUseCase: mock, flowDelegate: flowMock)
+        
+        // when
+        sut.action.select(book: Book(title: "", subtitle: "", price: "", image: "", url: "", isbn13: ""))
+        
+        // then
+        XCTAssertTrue(flowMock.callCount == 1, "Called zero or more than 2 - count: \(mock.callCount)")
     }
 }
