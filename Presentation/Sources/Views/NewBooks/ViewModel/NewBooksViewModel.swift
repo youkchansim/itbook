@@ -9,9 +9,15 @@ import Combine
 import UseCases
 import Entities
 
+public protocol NewBooksFlowDelegate {
+    
+    func showDetail(book: Book)
+}
+
 public protocol NewBooksViewModelAction {
     
     func loadNewBooks()
+    func select(book: Book)
 }
 
 public protocol NewBooksViewModelState {
@@ -28,13 +34,16 @@ public protocol NewBooksViewModelType {
 public final class NewBooksViewModel: NewBooksViewModelAction, NewBooksViewModelState {
     
     private let newBooksUseCase: NewBooksUseCase
+    private let flowDelegate: NewBooksFlowDelegate
     
     public var newBooks: CurrentValueSubject<[Book], Error> = CurrentValueSubject([])
     
     public init(
-        newBooksUseCase: NewBooksUseCase
+        newBooksUseCase: NewBooksUseCase,
+        flowDelegate: NewBooksFlowDelegate
     ) {
         self.newBooksUseCase = newBooksUseCase
+        self.flowDelegate = flowDelegate
     }
     
     public func loadNewBooks() {
@@ -45,6 +54,10 @@ public final class NewBooksViewModel: NewBooksViewModelAction, NewBooksViewModel
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    public func select(book: Book) {
+        flowDelegate.showDetail(book: book)
     }
 }
 

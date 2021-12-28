@@ -78,6 +78,12 @@ extension NewBooksViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        let book = viewModel.state.newBooks.value[indexPath.row]
+        viewModel.action.select(book: book)
+    }
 }
 
 extension NewBooksViewController: UITableViewDataSource {
