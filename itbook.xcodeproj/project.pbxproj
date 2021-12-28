@@ -12,6 +12,7 @@
 		E9B2DE24277830EE004FAF83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9B2DE23277830EE004FAF83 /* Assets.xcassets */; };
 		E9B2DE27277830EE004FAF83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9B2DE25277830EE004FAF83 /* LaunchScreen.storyboard */; };
 		E9B2DE32277830EF004FAF83 /* itbookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B2DE31277830EF004FAF83 /* itbookTests.swift */; };
+		E9B2DE57277958AD004FAF83 /* App in Frameworks */ = {isa = PBXBuildFile; productRef = E9B2DE56277958AD004FAF83 /* App */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		E9B2DE4C27786EB7004FAF83 /* Data */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Data; sourceTree = "<group>"; };
 		E9B2DE4E27789264004FAF83 /* Util */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Util; sourceTree = "<group>"; };
 		E9B2DE4F2778981E004FAF83 /* Presentation */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Presentation; sourceTree = "<group>"; };
+		E9B2DE5527795403004FAF83 /* Application */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Application; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9B2DE57277958AD004FAF83 /* App in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +64,7 @@
 		E9B2DE0E277830ED004FAF83 = {
 			isa = PBXGroup;
 			children = (
+				E9B2DE5527795403004FAF83 /* Application */,
 				E9B2DE4F2778981E004FAF83 /* Presentation */,
 				E9B2DE4E27789264004FAF83 /* Util */,
 				E9B2DE4C27786EB7004FAF83 /* Data */,
@@ -69,6 +73,7 @@
 				E9B2DE19277830ED004FAF83 /* itbook */,
 				E9B2DE30277830EF004FAF83 /* itbookTests */,
 				E9B2DE18277830ED004FAF83 /* Products */,
+				E9B2DE502778BF9F004FAF83 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +106,13 @@
 			path = itbookTests;
 			sourceTree = "<group>";
 		};
+		E9B2DE502778BF9F004FAF83 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -117,6 +129,9 @@
 			dependencies = (
 			);
 			name = itbook;
+			packageProductDependencies = (
+				E9B2DE56277958AD004FAF83 /* App */,
+			);
 			productName = itbook;
 			productReference = E9B2DE17277830ED004FAF83 /* itbook.app */;
 			productType = "com.apple.product-type.application";
@@ -481,6 +496,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E9B2DE56277958AD004FAF83 /* App */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = App;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E9B2DE0F277830ED004FAF83 /* Project object */;
 }
